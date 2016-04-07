@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Pavol Rajzak, Itera.
  */
 @Component
-public class HelloWorldBean {
+public class HelloWorldServiceImpl implements HelloWorldService {
 
     @PersistenceContext
     EntityManager entityManager;

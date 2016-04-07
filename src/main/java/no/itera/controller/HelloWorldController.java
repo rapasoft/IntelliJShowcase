@@ -1,6 +1,7 @@
 package no.itera.controller;
 
-import no.itera.bean.HelloWorldBean;
+import no.itera.bean.HelloWorldService;
+import no.itera.bean.HelloWorldServiceImpl;
 import no.itera.model.HelloWorld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class HelloWorldController {
     static final String RESOURCE_PATH = "/hello-world";
 
     @Autowired
-    private HelloWorldBean helloWorldBean;
+    private HelloWorldService helloWorldBean;
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)

@@ -14,18 +14,18 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Pavol Rajzak, Itera.
  */
-public class HelloWorldBeanTest {
+public class HelloWorldServiceImplTest {
 
     /*
         1. Extract constants "Hello world", "1"
         2. Extract method to create "helloWorldMock() : HelloWorld"
      */
 
-    private HelloWorldBean helloWorldBean;
+    private HelloWorldServiceImpl helloWorldBean;
 
     @Before
     public void before() {
-        helloWorldBean = new HelloWorldBean();
+        helloWorldBean = new HelloWorldServiceImpl();
         helloWorldBean.entityManager = mock(EntityManager.class);
 
         HelloWorld helloWorld = mock(HelloWorld.class);
