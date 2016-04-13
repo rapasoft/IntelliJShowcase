@@ -11,22 +11,23 @@ import javax.persistence.Id;
 @Entity
 public class HelloWorld {
 
-    @Id @GeneratedValue
-    @Column(name = "ID")
-    private Integer id;
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
+	private Integer id;
 
-    @Column(name = "MESSAGE")
-    private String message;
+	@Column(name = "MESSAGE")
+	private String message;
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 }

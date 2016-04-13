@@ -9,10 +9,10 @@ import java.util.List;
  * Created by Pavol Rajzak, Itera.
  */
 public interface HelloWorldService {
-    HelloWorld fetch(Integer id);
+	HelloWorld fetch(Integer id);
 
-    @Transactional
-    Integer create(HelloWorld helloWorld);
+	@Transactional
+	Integer create(HelloWorld helloWorld);
 
-    List<HelloWorld> fetchAll();
+	List<HelloWorld> fetchAll();
 }

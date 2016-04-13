@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import javax.persistence.EntityManager;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
@@ -16,31 +16,26 @@ import static org.mockito.Mockito.*;
  */
 public class HelloWorldServiceImplTest {
 
-    /*
-        1. Extract constants "Hello world", "1"
-        2. Extract method to create "helloWorldMock() : HelloWorld"
-     */
+	private HelloWorldServiceImpl helloWorldBean;
 
-    private HelloWorldServiceImpl helloWorldBean;
+	@Before
+	public void before() {
+		helloWorldBean = new HelloWorldServiceImpl();
+		helloWorldBean.entityManager = mock(EntityManager.class);
 
-    @Before
-    public void before() {
-        helloWorldBean = new HelloWorldServiceImpl();
-        helloWorldBean.entityManager = mock(EntityManager.class);
+		HelloWorld helloWorld = mock(HelloWorld.class);
+		when(helloWorld.getMessage()).thenReturn("Hello World");
 
-        HelloWorld helloWorld = mock(HelloWorld.class);
-        when(helloWorld.getMessage()).thenReturn("Hello World");
+		when(helloWorldBean.entityManager.find(eq(HelloWorld.class), anyInt())).thenReturn(helloWorld);
+	}
 
-        when(helloWorldBean.entityManager.find(eq(HelloWorld.class), anyInt())).thenReturn(helloWorld);
-    }
+	@Test
+	public void fetchHelloWorld() throws Exception {
+		HelloWorld helloWorld = helloWorldBean.fetch(1);
 
-    @Test
-    public void fetchHelloWorld() throws Exception {
-        HelloWorld helloWorld = helloWorldBean.fetch(1);
+		assertEquals("Hello World", helloWorld.getMessage());
 
-        assertEquals("Hello World", helloWorld.getMessage());
-
-        verify(helloWorldBean.entityManager).find(eq(HelloWorld.class), eq(1));
-    }
+		verify(helloWorldBean.entityManager).find(eq(HelloWorld.class), eq(1));
+	}
 
 }

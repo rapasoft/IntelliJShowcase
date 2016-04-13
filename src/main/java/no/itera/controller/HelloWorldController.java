@@ -1,7 +1,6 @@
 package no.itera.controller;
 
 import no.itera.bean.HelloWorldService;
-import no.itera.bean.HelloWorldServiceImpl;
 import no.itera.model.HelloWorld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,27 +16,27 @@ import java.util.List;
 @RequestMapping(value = HelloWorldController.RESOURCE_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
 public class HelloWorldController {
 
-    static final String RESOURCE_PATH = "/hello-world";
+	static final String RESOURCE_PATH = "/hello-world";
 
-    @Autowired
-    private HelloWorldService helloWorldBean;
+	@Autowired
+	private HelloWorldService helloWorldBean;
 
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public List<HelloWorld> getAll() {
-        return helloWorldBean.fetchAll();
-    }
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public List<HelloWorld> getAll() {
+		return helloWorldBean.fetchAll();
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public HelloWorld getOne(@PathVariable Integer id) {
-        return helloWorldBean.fetch(id);
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public HelloWorld getOne(@PathVariable Integer id) {
+		return helloWorldBean.fetch(id);
+	}
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public Integer save(@RequestBody HelloWorld helloWorld) {
-        return helloWorldBean.create(helloWorld);
-    }
+	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public Integer save(@RequestBody HelloWorld helloWorld) {
+		return helloWorldBean.create(helloWorld);
+	}
 
 }
